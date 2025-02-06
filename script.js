@@ -119,3 +119,43 @@ document.querySelectorAll('.cta-button, .get-started-btn, .store-button').forEac
         button.style.setProperty('--yPos', y + 'px');
     });
 });
+// Team Carousel functionality
+const teamMembers = document.querySelectorAll('.team-member');
+let currentMemberIndex = 0;
+const totalMembers = teamMembers.length;
+
+function updateTeamCarousel() {
+    teamMembers.forEach((member, index) => {
+        member.classList.remove('active', 'prev', 'next');
+        
+        if (index === currentMemberIndex) {
+            member.classList.add('active');
+        } else if (index === (currentMemberIndex - 1 + totalMembers) % totalMembers) {
+            member.classList.add('prev');
+        } else if (index === (currentMemberIndex + 1) % totalMembers) {
+            member.classList.add('next');
+        }
+    });
+}
+
+function nextTeamMember() {
+    currentMemberIndex = (currentMemberIndex + 1) % totalMembers;
+    updateTeamCarousel();
+}
+
+function prevTeamMember() {
+    currentMemberIndex = (currentMemberIndex - 1 + totalMembers) % totalMembers;
+    updateTeamCarousel();
+}
+
+// Auto-cycle team members
+let teamCarouselInterval = setInterval(nextTeamMember, 3000);
+
+// Reset interval on manual navigation
+function resetInterval() {
+    clearInterval(teamCarouselInterval);
+    teamCarouselInterval = setInterval(nextTeamMember, 3000);
+}
+
+// Initialize team carousel
+updateTeamCarousel();
