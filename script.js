@@ -159,3 +159,4 @@ function resetInterval() {
 
 // Initialize team carousel
 updateTeamCarousel();
+

@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+.language-switcher {
+    margin-left: auto;
+    margin-right: 20px;
+}
+.language-switcher select {
+    padding: 5px;
+    font-size: 16px;
+}
+
 :root {
     --primary-color: grey;
     --secondary-color: #502c49;
@@ -64,8 +73,9 @@ body {
 }
 
 .nav-links {
+    margin-left: 200px;
     display: flex;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .nav-links a {
@@ -724,3 +734,15 @@ body {
     background: var(--gradient-start);
     transform: scale(1.1);
 }
+
+.language-switcher select {
+    padding: 0.5rem 1.2rem;
+    border-radius: 5px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1.5; 
+    text-align: center; 
+}
+
+
