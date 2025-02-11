@@ -119,44 +119,35 @@ document.querySelectorAll('.cta-button, .get-started-btn, .store-button').forEac
         button.style.setProperty('--yPos', y + 'px');
     });
 });
-// Team Carousel functionality
-const teamMembers = document.querySelectorAll('.team-member');
-let currentMemberIndex = 0;
-const totalMembers = teamMembers.length;
+// Team Section Carousel
+const teamContainer = document.querySelector('.team-grid');
+const teamMembers = Array.from(document.querySelectorAll('.team-member'));
+let currentIndex = 0;
+const visibleMembers = 4; // Number of members to display initially
 
-function updateTeamCarousel() {
-    teamMembers.forEach((member, index) => {
-        member.classList.remove('active', 'prev', 'next');
-        
-        if (index === currentMemberIndex) {
-            member.classList.add('active');
-        } else if (index === (currentMemberIndex - 1 + totalMembers) % totalMembers) {
-            member.classList.add('prev');
-        } else if (index === (currentMemberIndex + 1) % totalMembers) {
-            member.classList.add('next');
-        }
+function moveTeam() {
+    const memberWidth = teamMembers[0].offsetWidth; // Width of one member
+    teamContainer.style.transition = 'transform 0.5s ease-in-out';
+    teamContainer.style.transform = `translateX(-${memberWidth}px)`;
+
+    setTimeout(() => {
+        teamContainer.style.transition = 'none';
+        teamContainer.appendChild(teamMembers[currentIndex]);
+        teamContainer.style.transform = 'translateX(0)';
+        currentIndex = (currentIndex + 1) % teamMembers.length;
+    }, 500); // Match the transition duration
+}
+
+// Start the carousel after displaying the initial members
+setTimeout(() => {
+    let carouselInterval = setInterval(moveTeam, 3000);
+
+    // Pause on hover
+    teamContainer.addEventListener('mouseenter', () => {
+        clearInterval(carouselInterval);
     });
-}
 
-function nextTeamMember() {
-    currentMemberIndex = (currentMemberIndex + 1) % totalMembers;
-    updateTeamCarousel();
-}
-
-function prevTeamMember() {
-    currentMemberIndex = (currentMemberIndex - 1 + totalMembers) % totalMembers;
-    updateTeamCarousel();
-}
-
-// Auto-cycle team members
-let teamCarouselInterval = setInterval(nextTeamMember, 3000);
-
-// Reset interval on manual navigation
-function resetInterval() {
-    clearInterval(teamCarouselInterval);
-    teamCarouselInterval = setInterval(nextTeamMember, 3000);
-}
-
-// Initialize team carousel
-updateTeamCarousel();
-
+    teamContainer.addEventListener('mouseleave', () => {
+        carouselInterval = setInterval(moveTeam, 3000);
+    });
+}, 1000); // Adjust the delay as needed to display the initial members
