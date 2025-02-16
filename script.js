@@ -37,15 +37,10 @@ window.addEventListener('scroll', () => {
         navbar.style.transform = 'translateY(0)';
     }
     
-    if (currentScroll > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.backdropFilter = 'blur(10px)';
-        navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.backdropFilter = 'blur(5px)';
-        navbar.style.boxShadow = 'none';
-    }
+    // Keep the navbar transparent and avoid changing its background color
+    navbar.style.background = 'transparent';
+    navbar.style.backdropFilter = 'blur(10px)'; // Optional: Keep the blur effect if needed
+    navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)'; // Optional: Keep the shadow effect if needed
     
     lastScroll = currentScroll;
 });
@@ -151,3 +146,4 @@ setTimeout(() => {
         carouselInterval = setInterval(moveTeam, 3000);
     });
 }, 1000); // Adjust the delay as needed to display the initial members
+
