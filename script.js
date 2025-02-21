@@ -147,3 +147,19 @@ setTimeout(() => {
     });
 }, 1000); // Adjust the delay as needed to display the initial members
 
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("previewVideo");
+    const toggleSoundBtn = document.getElementById("toggleSound");
+
+    toggleSoundBtn.addEventListener("click", function () {
+        if (video.muted) {
+            video.muted = false;
+            toggleSoundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+        } else {
+            video.muted = true;
+            toggleSoundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        }
+    });
+});
+
+
