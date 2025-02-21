@@ -142,7 +142,7 @@ body {
     background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f8 100%);
     position: relative;
     overflow: hidden;
-    background: url('./Assets/flag.png') no-repeat center center/cover;
+    background: url('./Assets/background_2.jpg') no-repeat center center/cover;
 }
 
 .hero::before {
