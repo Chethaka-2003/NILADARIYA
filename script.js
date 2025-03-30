@@ -161,5 +161,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+window.addEventListener('scroll', () => {
+    // Always keep the navbar visible
+    navbar.style.transform = 'translateY(0)';
+    // Maintain the updated less-transparent background
+    navbar.style.background = 'rgba(255, 255, 255, 0.455)';
+});
 
 

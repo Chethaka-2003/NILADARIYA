@@ -16,11 +16,11 @@
 
 :root {
     --primary-color: grey;
-    --secondary-color: #502c49;
+    --secondary-color: #2a3168;
     --accent-color: #E74C3C;
-    --gradient-start: #550000;
-    --gradient-end: #ff914d;
-    --text-color: #333;
+    --gradient-start: #279ee8;
+    --gradient-end: #369da1;
+    --text-color: #0e0e0e;
     --light-bg: #F5F6FA;
 }
 
@@ -52,7 +52,7 @@ body {
     top: 0;
     width: 100%;
     padding: 1rem 5%;
-    background: transparent; /* Make the navbar background transparent */
+    background: rgba(255, 255, 255, 0.45); 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -276,7 +276,6 @@ body {
 
 .feature-card:hover::before {
     clip-path: circle(100% at 50% 50%);
-    
 }
 
 .feature-card:hover {
@@ -298,7 +297,7 @@ body {
 .feature-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .feature-card p {
@@ -367,6 +366,9 @@ body {
     border-radius: 50%;
     margin-bottom: 1rem;
     object-fit: cover;
+}
+.team-grid .team-member h3, .team-member p {
+    color: var(--text-color);
 }
 
 /* Download Section */
